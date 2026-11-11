@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智能任务管理 · 谢飞跃</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="hero-text">
+        <h1>智能任务管理</h1>
+        <p class="subtitle">Node.js + Supabase 全栈应用 · 谢飞跃</p>
+      </div>
+      <div class="hero-badge" id="modeBadge">连接中…</div>
+    </header>
+
+    <section class="panel">
+      <div class="input-row">
+        <input id="titleInput" type="text" maxlength="120"
+               placeholder="要做什么？例如：明天下午三点前提交报名材料" autocomplete="off" />
+        <select id="prioritySelect" aria-label="优先级">
+          <option value="高">高</option>
+          <option value="中" selected>中</option>
+          <option value="低">低</option>
+        </select>
+        <button id="addBtn" class="btn-primary" type="button">添加任务</button>
+      </div>
+      <p class="hint" id="hint">输入任务标题，系统会智能推荐优先级</p>
+    </section>
+
+    <section class="stats" id="stats">
+      <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-label">全部</span></div>
+      <div class="stat"><span class="stat-num" id="statPending">0</span><span class="stat-label">待完成</span></div>
+      <div class="stat"><span class="stat-num" id="statDone">0</span><span class="stat-label">已完成</span></div>
+    </section>
+
+    <section class="filters" id="filters">
+      <button class="chip active" data-priority="全部" type="button">全部</button>
+      <button class="chip" data-priority="高" type="button">高优先级</button>
+      <button class="chip" data-priority="中" type="button">中优先级</button>
+      <button class="chip" data-priority="低" type="button">低优先级</button>
+    </section>
+
+    <section class="list-card">
+      <ul class="task-list" id="taskList">
+        <li class="empty">正在加载任务…</li>
+      </ul>
+    </section>
+
+    <footer class="foot">
+      <span>数据存储：<strong id="modeText">—</strong></span>
+      <span>任务按创建时间倒序排列</span>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
